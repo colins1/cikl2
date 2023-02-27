@@ -18,11 +18,16 @@ export default function MyComponent() {
 
     const handleChangeDell = (event) => {
       event.preventDefault()
-      fetch('http://localhost:7777/notes/:id', {
-          method: 'POST',
-          id: event.target.id
+      let as = `http://localhost:7777/notes/${event.target.id}`
+      fetch(as, {
+        method: 'DELETE'
       });
-      }
+      setitemON(Math.random());
+    }
+    const handleChangeгUpdate = (event) => {
+      event.preventDefault()
+      setitemON(Math.random());
+    }
   
     useEffect(() => {
       fetch("http://localhost:7777/notes")
@@ -36,6 +41,7 @@ export default function MyComponent() {
   
     return (
     <div>
+        <div><button onClick={handleChangeгUpdate}>Обновление</button></div>
         <div style={{width: "100%"}}>
         {items.map(item => (
         <div style={{width: "25%", float: "left", border: "solid black 1px", margin: "10px"}} key={item.id}>
